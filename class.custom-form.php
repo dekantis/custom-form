@@ -122,7 +122,11 @@ class CustomForm {
         $mail_sent = wp_mail($_POST['email'], $_POST['subject'], $_POST['message']);
         if (!$mail_sent) {
             self::$error_message = 'Email didn\'t send';
+
+            return;
         }
+
+        error_log("Message from custom form sent to {$_POST['email']} successfully.");
     }
 
     /**
